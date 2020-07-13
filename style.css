@@ -1,0 +1,89 @@
+
+body{
+    background:url("/home/anjali/Downloads/back.jpg");
+    }
+
+#tb{
+    border-collapse: collapse;
+    border-spacing: 0px;
+     margin: 0 auto;
+    text-align: center;
+    margin-top:80px;
+    margin-bottom: 80px;
+  
+}
+.game{
+    width: 130px;
+    height: 130px;
+    min-width: 20px;
+    min-height: 20px;
+    background: transparent;
+    border:5px solid white;
+    text-align: center;
+    font-family: cursive;
+    font-size:40px;
+    font-weight: bolder;
+    color: white;
+    
+}
+#r1,#r2,#r3,#r4,#r5,#r6,#r7,#r8,#r9{
+    border-right:none;
+}
+#r1,#r4,#r7{
+border-left: transparent;
+}
+#r1,#r2,#r3{
+    border-top: transparent;
+    
+}
+#r7,#r8,#r9{
+    border-bottom: transparent;
+}
+
+#r1,#r2,#r3,#r4,#r5,#r6{
+    border-bottom: transparent;
+}
+
+#im{
+    display: block;
+    margin: 0 auto;
+    
+    padding-top: 50px;
+    padding-bottom: 30px;
+
+}
+#c,#c1,#new{
+    display:block;
+    margin: 0 auto;
+}
+#c2{
+    margin: auto;
+}
+button{
+    font-family: cursive;
+    font-weight: bolder;
+    font-style: italic;
+    
+}
+#menu{
+ float: left;
+
+}
+#playboard{
+    float:right;
+}
+#new,#mode1,#mode2{
+   padding-left:40px;
+text-align: center;
+margin-top: 30px;
+
+}
+span{
+padding: 70px;
+font-family:cursive;
+font-style: italic;
+font-weight: bolder;
+}
+.active{
+    background-color: gray !important;
+}
