@@ -22,7 +22,7 @@ if(this.id=="Human") {
    for(let i=1;i<10;i++){
     $('#r'+i).html(' ');
     }
-    $('#new').click(function(){ $('#im').attr('src',"/home/anjali/Pictures/tac2.png")
+    $('#new').click(function(){ $('#im').attr('src',"tac2.png")
     turn='x';   
     for(let i=1;i<10;i++){win=0;
             $('#r'+i).html(' ');
@@ -207,16 +207,16 @@ if($('#r3').text()==$('#r5').text() && $('#r5').text()==$('#r7').text())
 }
 function changeImage(turn){
     if(turn==player){
-        $('#im').attr('src',"/home/anjali/Pictures/tac3.png")
+        $('#im').attr('src',"tac3.png")
         $('#im').fadeOut(200)
         $('#im').fadeIn(200)
     
     $("#im").fadeOut(500, function() {
-        $("#im").attr("src","/home/anjali/Pictures/tac1.png");
+        $("#im").attr("src","tac1.png");
     }).fadeIn(500); 
     }
   else  if(turn==opponent){
-        $('#im').attr('src',"/home/anjali/Pictures/tac4.png")
+        $('#im').attr('src',"tac4.png")
     }
 }
 
