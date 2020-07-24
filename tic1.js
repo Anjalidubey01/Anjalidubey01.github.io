@@ -18,7 +18,7 @@ var opponent='x';
      //To choose the first Player
     $('.start').click(function(){
         $('.start').removeClass("btn btn-secondary active").addClass('btn btn-outline-secondary');
-    $(this).addClass('active');
+        $(this).addClass('active');
 if(this.id=="Computer") {
 Computer=1;
 Human=0;}
@@ -31,9 +31,10 @@ if(this.id=="Human") {
    for(let i=1;i<10;i++){
     $('#r'+i).html(' ');
     }
+    //Setting the new Playboard
     $('#new').click(function(){ 
         $('#winner').html('PLAYING THE REAL GAME')
-        $('#im').attr('src',"/home/anjali/Pictures/tac2.png")
+        $('#im').attr('src',"tac2.png")
     $('#tb').css('background','black')
     turn='x';   
     for(let i=1;i<10;i++){win=0;
@@ -55,7 +56,7 @@ if(this.id=="Human") {
            else
            firstComp=1;
     });
-    
+    //Starting the game
     $('.game').click(function(){console.log(turn)
        if(Anyleft()==true && win==0){
      $(this).html(turn);
@@ -92,6 +93,7 @@ if(this.id=="Human") {
          $('.game').prop('disabled',true);
      }
     });
+    //For difficulty level 1....Just place the turn at random places
     function random_place(){
         var x=Math.floor((Math.random()*9+1)+1);
         let blank=0;
@@ -117,6 +119,7 @@ if(this.id=="Human") {
         return x;
 
     }
+    //To check if any positions in playboard is left or not
     function Anyleft(){
         let pos=false;
         for(let i=1;i<10;i++){
@@ -128,6 +131,7 @@ if(this.id=="Human") {
         }
         return pos;
     }
+    //Find the best position for AI player
     function findBest(){
        let B=-1000;
        let bestPosition;
@@ -146,7 +150,7 @@ if(this.id=="Human") {
        }
      
     return bestPosition}
-
+//IMplementing minimax algorithms through this function
  function minimax(depth,ismax,alpha,beta){
      
            let score=Evaluate();
@@ -189,6 +193,7 @@ if(this.id=="Human") {
                
            }
        }
+    //To check if three in a row or columns or in diaginals matched or not
        function Evaluate(){
            for(var i=1;i<=7;i=i+3){
     if($('#r'+i).text()==$('#r'+(i+1)).text() && $('#r'+(i+1)).text()==$('#r'+(i+2)).text() ){
@@ -236,22 +241,23 @@ if($('#r3').text()==$('#r5').text() && $('#r5').text()==$('#r7').text())
     
     
 }
+    //To make changes after somewin wins the game
 function changeImage(turn){ 
    $('#winner').html('Congratulations!! '+turn+' won')
     $('#tb').css('background','#ccc')
     
     if(turn==player){
-        $('#im').attr('src',"/home/anjali/Pictures/tac3.png")
+        $('#im').attr('src',"tac3.png")
         $('#im').fadeOut(200)
         $('#im').fadeIn(200)
     
     $("#im").fadeOut(500, function() {
-        $("#im").attr("src","/home/anjali/Pictures/tac1.png");
+        $("#im").attr("src","tac1.png");
     }).fadeIn(500); 
     }
   else  if(turn==opponent){
      
-        $('#im').attr('src',"/home/anjali/Pictures/tac4.png")
+        $('#im').attr('src',"tac4.png")
     }
    
 }
