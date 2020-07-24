@@ -3,11 +3,15 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link href="style.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Creepster' rel='stylesheet'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- 
 <style>
   body{
     margin: 20px;
+  }
+  button{
+    font-family: 'Sofia'
   }
 </style>
 </head>
@@ -20,19 +24,20 @@
       <img id="im" src="tac2.png">
       <span >depth</span><br>
      <div id="c" style="text-align: center;" class="btn-group">  
-      <button class="btn btn-outline-secondary">1</button>
-        <button class="btn btn-outline-secondary" >2</button>
-        <button class="btn btn-outline-secondary" >3</button>
-        <button class="btn btn-outline-secondary" >4</button>
-        <button class="btn btn-secondary" >unlimited</button>
+      <button class="btn btn-outline-secondary depthL">1</button>
+        <button class="btn btn-outline-secondary depthL" >2</button>
+        <button class="btn btn-outline-secondary depthL" >3</button>
+        <button class="btn btn-outline-secondary depthL" >4</button>
+        <button class="btn btn-secondary depthL" >unlimited</button>
       </div> 
       <br>
       <span>Starting player</span>
       <div id="c1" style="text-align: center;" class="btn-group">
       <button id="Human" class="btn btn-outline-secondary start active">Human</button>
     <button id="Computer" class="btn btn-outline-secondary start">Computer</button></div>
-  <div style="text-align: center;"> <button id="mode1" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" title="Human versus Human">Mode 1</button>
-    <button id="mode2" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" title="Challenge yourself with AI">Mode 2</button></div>
+     <div class="alert alert-success">
+  <span id='winner'>PLAYING THE REAL GAME</span> 
+</div>
     <button id="new" class="btn btn-success">NEW GAME</button>
  
     
