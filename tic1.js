@@ -1,28 +1,40 @@
-$(document).ready(function(){var player='0';
+$(document).ready(function(){
+var difficuly_level;
+var player='0';
 var opponent='x';
     $('#Human').addClass('active')
     var firstComp=0;
     var Computer=0;
     var Human=1;
-    //To choose the first Player
+   //To choose the difficulty level
+    $('.depthL').click(function(){
+        $('.depthL').removeClass('btn btn-secondary active').addClass('btn btn-outline-secondary');
+        $(this).addClass('active');
+        difficuly_level=$(this).text();
+        if(difficuly_level=='unlimited')
+        difficuly_level=5;
+        console.log(difficuly_level);
+    })
+     //To choose the first Player
     $('.start').click(function(){
         $('.start').removeClass("btn btn-secondary active").addClass('btn btn-outline-secondary');
     $(this).addClass('active');
 if(this.id=="Computer") {
 Computer=1;
-Human=0;
-console.log("Computer is starting player")}
+Human=0;}
 if(this.id=="Human") {
     Computer=0;
-    Human=1;
-    console.log("Human is starting player")}})
+    Human=1;}})
 //Starting PLayer is x
     var turn='x';
     var win=0;
    for(let i=1;i<10;i++){
     $('#r'+i).html(' ');
     }
-    $('#new').click(function(){ $('#im').attr('src',"tac2.png")
+    $('#new').click(function(){ 
+        $('#winner').html('PLAYING THE REAL GAME')
+        $('#im').attr('src',"/home/anjali/Pictures/tac2.png")
+    $('#tb').css('background','black')
     turn='x';   
     for(let i=1;i<10;i++){win=0;
             $('#r'+i).html(' ');
@@ -44,7 +56,7 @@ if(this.id=="Human") {
            firstComp=1;
     });
     
-    $('.game').click(function(){
+    $('.game').click(function(){console.log(turn)
        if(Anyleft()==true && win==0){
      $(this).html(turn);
      $(this).prop('disabled',true);
@@ -53,10 +65,14 @@ if(this.id=="Human") {
         changeImage(turn);
          console.log(turn+' has ruled the world');
      }
+     if(win!=1){
      turn=(turn==player)?opponent:player;
-     
-     if(firstComp!=0){
-     let best=findBest();
+     console.log(turn);
+     if(firstComp!=0){let best;
+         if(difficuly_level=='1')
+       best=random_place();
+        else
+       best=findBest();
      $('#r'+best).html(turn);
      $('#r'+best).prop('disabled',true);}
      else{firstComp=1;
@@ -68,27 +84,36 @@ if(this.id=="Human") {
      if(Evaluate()==20||Evaluate()==-20){win=1;
         changeImage(turn);
         console.log(turn+' has ruled the world');
-    }
+    }}
+    if(win!=1)
      turn=(turn==player)?opponent:player;
     }
      else{
          $('.game').prop('disabled',true);
      }
     });
+    function random_place(){
+        var x=Math.floor((Math.random()*9+1)+1);
+        let blank=0;
+        while(!blank){x=Math.floor((Math.random()*9+1)+1);
+            if($('#r'+x).text()==' ')
+            {
+              blank=1;}
+        }
+       
+        return x;
+
+    }
+    
     function firstComputerTurn(){
         var x=Math.floor((Math.random()*9+1)+1);
-        
-        while(x%2==0){
-            var x=Math.floor((Math.random()*9+1)+1);
-      
+        let blank=0;
+        while(!blank){x=Math.floor((Math.random()*9+1)+1);
+            if($('#r'+x).text()==' ' && x%2==1)
+            {
+              blank=1;}
         }
-        if($('#r'+x).text()!=' '){
-            while(x%2==0){
-                var x=Math.floor((Math.random()*9+1)+1);
-          
-            }
-        }
-
+       
         return x;
 
     }
@@ -113,23 +138,28 @@ if(this.id=="Human") {
                Current=minimax(0,false,-10000,+10000);
                console.log(Current)
                $('#r'+i).html(' ');
-               console.log('here i am');
+              
            if(Current>B){console.log('in findbest '+ B)
                          B=Current;
                          bestPosition=i;
            }}
        }
-       console.log('best position : '+bestPosition);
+     
     return bestPosition}
 
-       function minimax(depth,ismax,alpha,beta){
+ function minimax(depth,ismax,alpha,beta){
+     
            let score=Evaluate();
-           if(score==20)
-           return (score-depth);
-           if(score==-20)
-           return (score+depth)
-           if(Anyleft()==false)
+           if(Anyleft()==false || depth>=difficuly_level)
            return 0;
+           if(score==20){
+           
+            return (score-depth);
+        }
+           if(score==-20){
+           return (score+depth)
+                      }           
+         
            if(ismax){let best=-10000;
                for(let i=1;i<10;i++){
                    if($('#r'+i).text()==' '){
@@ -164,6 +194,7 @@ if(this.id=="Human") {
     if($('#r'+i).text()==$('#r'+(i+1)).text() && $('#r'+(i+1)).text()==$('#r'+(i+2)).text() ){
 
    if($('#r'+i).text()==player){
+   
         return +20;
         }
         else if($('#r'+i).text()==opponent){
@@ -205,19 +236,24 @@ if($('#r3').text()==$('#r5').text() && $('#r5').text()==$('#r7').text())
     
     
 }
-function changeImage(turn){
+function changeImage(turn){ 
+   $('#winner').html('Congratulations!! '+turn+' won')
+    $('#tb').css('background','#ccc')
+    
     if(turn==player){
-        $('#im').attr('src',"tac3.png")
+        $('#im').attr('src',"/home/anjali/Pictures/tac3.png")
         $('#im').fadeOut(200)
         $('#im').fadeIn(200)
     
     $("#im").fadeOut(500, function() {
-        $("#im").attr("src","tac1.png");
+        $("#im").attr("src","/home/anjali/Pictures/tac1.png");
     }).fadeIn(500); 
     }
   else  if(turn==opponent){
-        $('#im').attr('src',"tac4.png")
+     
+        $('#im').attr('src',"/home/anjali/Pictures/tac4.png")
     }
+   
 }
 
 })
