@@ -1,5 +1,5 @@
 $(document).ready(function(){
-var difficuly_level;
+var difficuly_level=5;
 var player='0';
 var opponent='x';
     $('#Human').addClass('active')
