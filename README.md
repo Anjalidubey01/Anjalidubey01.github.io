@@ -1,2 +1,5 @@
 # TIC-TAC-TOE-with-AI
-A TIC TAC TOE game powered by AI .
+Tic Tac game with an AI Player is developed with the help of minimax algorithm and Alpha-beta pruning.
+
+
+
