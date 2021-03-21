@@ -193,7 +193,7 @@ if(this.id=="Human") {
                
            }
        }
-    //To check if three in a row or columns or in diaginals matched or not
+    //To check if three in a row or columns or in diagonals matched or not
        function Evaluate(){
            for(var i=1;i<=7;i=i+3){
     if($('#r'+i).text()==$('#r'+(i+1)).text() && $('#r'+(i+1)).text()==$('#r'+(i+2)).text() ){
